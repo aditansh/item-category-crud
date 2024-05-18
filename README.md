@@ -1,5 +1,3 @@
-# Project Title
-
 A CRUP api for simple item management.
 
 ## Tech Stack
