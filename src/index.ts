@@ -1,6 +1,7 @@
 import cors from "cors";
 import dotenv from "dotenv";
 import express, { Request, Response } from "express";
+import routes  from "./routes";
 // import { loadConstants } from "./constants";
 
 dotenv.config();
@@ -20,6 +21,8 @@ declare global {
 
 app.use(cors());
 app.use(express.json());
+
+app.use("/", routes);
 
 app.get("/ping", (_req: Request, res: Response) => {
   return res.send({ status: "success", message: "pong!" });
