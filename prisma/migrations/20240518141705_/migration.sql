@@ -69,6 +69,15 @@ CREATE TABLE "Item" (
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "Category_name_key" ON "Category"("name");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Subcategory_name_key" ON "Subcategory"("name");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Item_name_key" ON "Item"("name");
+
 -- AddForeignKey
 ALTER TABLE "Subcategory" ADD CONSTRAINT "Subcategory_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "Category"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
