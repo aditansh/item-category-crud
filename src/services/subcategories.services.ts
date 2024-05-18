@@ -149,36 +149,26 @@ export const updateSubcategory = async (
     throw new APIError(404, "Subcategory not found");
   }
 
-  if (data.taxApplicable !== true && data.taxApplicable !== false) {
+  if (data.taxApplicable && data.taxNumber && data.taxType) {
     await prisma.subcategory.update({
       where: { id },
       data: {
         image: data.image ?? subcategory.image,
         description: data.desc ?? subcategory.description,
+        taxApplicable: data.taxApplicable,
+        taxNumber: parseInt(data.taxNumber),
+        taxType: data.taxType,
       },
     });
   } else {
-    if (data.taxApplicable && data.taxNumber && data.taxType) {
-      await prisma.subcategory.update({
-        where: { id },
-        data: {
-          image: data.image ?? subcategory.image,
-          description: data.desc ?? subcategory.description,
-          taxApplicable: data.taxApplicable,
-          taxNumber: parseInt(data.taxNumber),
-          taxType: data.taxType,
-        },
-      });
-    } else {
-      await prisma.subcategory.update({
-        where: { id },
-        data: {
-          image: data.image ?? subcategory.image,
-          description: data.desc ?? subcategory.description,
-          taxApplicable: data.taxApplicable ?? subcategory.taxApplicable,
-        },
-      });
-    }
+    await prisma.subcategory.update({
+      where: { id },
+      data: {
+        image: data.image ?? subcategory.image,
+        description: data.desc ?? subcategory.description,
+        taxApplicable: data.taxApplicable ?? subcategory.taxApplicable,
+      },
+    });
   }
 
   return true;

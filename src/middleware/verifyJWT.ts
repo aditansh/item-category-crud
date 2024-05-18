@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from "express";
 import jsonwebtoken from "jsonwebtoken";
-import { ACCESS_TOKEN_SECRET } from "../constants";
 
 export default async function verifyJWT(
   req: Request,
@@ -10,14 +9,14 @@ export default async function verifyJWT(
   const authorization = req.headers.authorization;
   const jwt = authorization ? authorization.split(" ")[1] : "";
   try {
-    if (!ACCESS_TOKEN_SECRET) {
+    if (!process.env.ACCESS_TOKEN_SECRET) {
       return res
         .status(500)
         .json({ status: "error", message: "internal server error" });
     }
     const decoded = jsonwebtoken.verify(
       jwt,
-      ACCESS_TOKEN_SECRET
+      process.env.ACCESS_TOKEN_SECRET
     ) as unknown as Record<string, string>;
 
     if (!decoded) {

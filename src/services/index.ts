@@ -7,6 +7,19 @@ import {
   updateCategory,
 } from "./categories.services";
 import {
+  getAllItems,
+  getItemById,
+  getItemByName,
+  getItemsByCategoryId,
+  getItemsByCategoryName,
+  getItemsBySubcategoryId,
+  getItemsBySubcategoryName,
+  searchItems,
+  createItem,
+  updateItem,
+  deleteItem,
+} from "./item.services";
+import {
   createSubcategory,
   deleteSubcategory,
   getAllSubcategories,
@@ -48,4 +61,16 @@ export const services = {
   createSubcategory: createSubcategory,
   updateSubcategory: updateSubcategory,
   deleteSubcategory: deleteSubcategory,
+
+  getAllItems: getAllItems,
+  getItemById: getItemById,
+  getItemByName: getItemByName,
+  getItemsByCategoryId: getItemsByCategoryId,
+  getItemsByCategoryName: getItemsByCategoryName,
+  getItemsBySubcategoryId: getItemsBySubcategoryId,
+  getItemsBySubcategoryName: getItemsBySubcategoryName,
+  searchItems: searchItems,
+  createItem: createItem,
+  updateItem: updateItem,
+  deleteItem: deleteItem,
 };

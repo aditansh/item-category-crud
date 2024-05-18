@@ -59,8 +59,8 @@ model Subcategory {
 }
 
 model Item {
-  id            String      @id @default(uuid())
-  name          String      @unique
+  id            String       @id @default(uuid())
+  name          String       @unique
   image         String
   description   String
   taxApplicable Boolean
@@ -69,10 +69,10 @@ model Item {
   baseCost      Float
   discount      Float
   price         Float
-  subcategory   Subcategory @relation(fields: [subcategoryId], references: [id], onDelete: Cascade)
-  subcategoryId String
-  category      Category    @relation(fields: [categoryId], references: [id])
-  categoryId    String
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
+  subcategory   Subcategory? @relation(fields: [subcategoryId], references: [id], onDelete: Cascade)
+  subcategoryId String?
+  category      Category?    @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  categoryId    String?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
 }

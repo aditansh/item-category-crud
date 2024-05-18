@@ -6,7 +6,13 @@ export async function createSubcategory(req: Request, res: Response) {
   const { name, image, desc, taxApplicable, taxNumber, taxType, categoryName } =
     req.body;
 
-  if (!name || !image || !desc || !categoryName) {
+  if (
+    !name ||
+    !image ||
+    !desc ||
+    !categoryName ||
+    (taxApplicable !== true && taxApplicable !== false)
+  ) {
     return res.status(400).json({ status: "error", message: "Invalid input" });
   }
 
