@@ -12,3 +12,66 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum Role {
+  ADMIN
+  USER
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String
+  password  String
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Category {
+  id            String        @id @default(uuid())
+  name          String
+  image         String
+  description   String
+  taxApplicable Boolean
+  taxNumber     Int?
+  taxType       String?
+  subcategories Subcategory[]
+  items         Item[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+model Subcategory {
+  id            String   @id @default(uuid())
+  name          String
+  image         String
+  description   String
+  taxApplicable Boolean
+  taxNumber     Int?
+  taxType       String?
+  category      Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  categoryId    String
+  items         Item[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Item {
+  id            String      @id @default(uuid())
+  name          String
+  image         String
+  description   String
+  taxApplicable Boolean
+  taxNumber     Int?
+  taxType       String?
+  baseCost      Float
+  discount      Float
+  price         Float
+  subcategory   Subcategory @relation(fields: [subcategoryId], references: [id], onDelete: Cascade)
+  subcategoryId String
+  category      Category    @relation(fields: [categoryId], references: [id])
+  categoryId    String
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
