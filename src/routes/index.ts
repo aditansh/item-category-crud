@@ -1,7 +1,7 @@
 import { Router } from "express";
 import userRouter from "./user.routes";
 import categoryRouter from "./category.routes";
-import subcategoryRouter from "./subcategoy.routes";
+import subcategoryRouter from "./subcategory.routes";
 import verifyJWT from "../middleware/verifyJWT";
 import itemRouter from "./item.routes";
 
