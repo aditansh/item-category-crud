@@ -49,3 +49,27 @@ docker-compose up --build -d
 ```
 
 4.  Use Postman and test the api at the endpoint `http://localhost:8080/`
+
+# Answe to the questions
+
+1. Which database you have chosen and why?
+```bash
+I have chosen PostgreSQL as the database because the data is structured and relational. PostgreSQL is a powerful, open-source object-relational database system that uses and extends the SQL language combined with many features that safely store and scale the most complicated data workloads.
+```
+
+2. 3 things that you learned from this assignment?
+```bash
+- I learned how to use Prisma to interact with the database.
+- I learned how to use Docker when there are migrations to be run.
+- I learned how to use TypeScript with Express.js.
+```
+
+3. What was the most difficult part of the assignment?
+```bash
+The most difficult part of the assignment was to set up the Prisma ORM with the PostgreSQL database. I had to learn how to use Prisma and how to write the schema for the database.
+```
+
+4. What you would have done differently given more time?
+```bash
+If I had more time, I would have written tests for the API endpoints. I would have also added more features to the API like pagination, filtering, and sorting.
+```
