@@ -1,5 +1,3 @@
-# Project Title
-
 A CRUP api for simple item management.
 
 ## Tech Stack
@@ -15,6 +13,7 @@ A CRUP api for simple item management.
 
 - [Node.js](https://nodejs.org): Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.
 - [Postman](https://www.postman.com)/[Apidog](https://apidog.com): A tool to test backend APIs without having to write frontends.
+  [Postman Collection](https://documenter.getpostman.com/view/25706513/2sA3QmCZbj)
 
 ## Steps
 
